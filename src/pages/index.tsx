@@ -17,7 +17,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 async function fetchUser(id: string, title: string, body: string){
   try{
-    const response = await axios.post('https://jsonplaceholder.typicode.com/posts');
+    const response = await axios.post(`https://jsonplaceholder.typicode.com/posts`, {id: '1600', title: 'hokage', body: 'no'});
 
     console.log('1. ', response.data);
     return response.data;
