@@ -2,8 +2,90 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import axios from 'axios';
 
 const inter = Inter({ subsets: ["latin"] });
+//****fetchData get  */
+// async function fetchData() {
+//   try {
+//     const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+//     console.log(response.data); // console.log prints to terminal
+//     return response.data;
+//   } catch (error) {
+//     if (axios.isAxiosError(error)) {
+//       console.error('Error fetching with Axios:', error.message);
+//     } else {
+      
+//       console.error('An unexpected error occurred:', error);
+//     }
+    
+//     throw error;
+//   }
+// }
+// fetchData();
+// console.log(fetchData()); // prints in the browser console.
+
+
+//** fetch post */
+async function fetchPost() {
+  
+  try {
+    const response = await axios.post('https://jsonplaceholder.typicode.com/posts');
+    console.log(response.data); // console.log prints to terminal
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error('Error fetching with Axios:', error.message);
+    } else {
+      
+      console.error('An unexpected error occurred:', error);
+    }
+    
+    throw error;
+  }
+}
+fetchPost();
+// // console.log(fetchData()); // prints in the browser console.
+
+//** fetch update does not work */
+// async function fetchupdate() {
+//   try {
+//     const response = await axios.put('https://jsonplaceholder.typicode.com/posts');
+//     console.log(response.data); // console.log prints to terminal
+//     return response.data;
+//   } catch (error) {
+//     if (axios.isAxiosError(error)) {
+//       console.error('Error fetching with Axios:', error.message);
+//     } else {
+      
+//       console.error('An unexpected error occurred:', error);
+//     }
+    
+//     throw error;
+//   }
+// }
+// fetchupdate();
+// console.log(fetchData()); // prints in the browser console.
+
+//** fetch delete does not work */
+// async function fetchdelete() {
+//   try {
+//     const response = await axios.delete('https://jsonplaceholder.typicode.com/posts');
+//     console.log(response.data); // console.log prints to terminal
+//     return response.data;
+//   } catch (error) {
+//     if (axios.isAxiosError(error)) {
+//       console.error('Error fetching with Axios:', error.message);
+//     } else {
+      
+//       console.error('An unexpected error occurred:', error);
+//     }
+    
+//     throw error;
+//   }
+// }
+// fetchdelete();
+// console.log(fetchData()); // prints in the browser console.
 
 export default function Home() {
   return (
