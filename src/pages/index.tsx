@@ -15,7 +15,24 @@ const inter = Inter({ subsets: ["latin"] });
   console.log('')
 })*/
 
-async function fetchUser(id: string, title: string, body: string){
+async function fetchUser(){
+  try{
+    const response = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
+
+    console.log(response.data);
+    return response.data;
+  }catch(error){
+    if (axios.isAxiosError(error)){
+      console.error("The fetch error is: ", error.message);
+    } else{
+      console.error("Unexpected error: ", error);
+    }
+
+    throw error;
+  }
+}
+
+async function createUser(id: string, title: string, body: string){
   try{
     const response = await axios.post(`https://jsonplaceholder.typicode.com/posts`, {id: '1600', title: 'hokage', body: 'no'});
 
@@ -32,7 +49,67 @@ async function fetchUser(id: string, title: string, body: string){
   }
 }
 
-fetchUser('Jeremy', 'wizard', 'no');
+async function updateUser(){
+  try{
+    const response = await axios.put(`https://jsonplaceholder.typicode.com/posts/1`, { title: 'shinobi'});
+
+    console.log(response.data);
+    return response.data
+  } catch(error){
+    if (axios.isAxiosError(error)){
+      console.error("The fetch error is: ", error.message);
+    } else{
+      console.error("Unexpected error: ", error);
+    }
+
+    throw error;
+  }
+}
+
+async function partialUpdateUser(){
+  try{
+    const response = await axios.patch(`https://jsonplaceholder.typicode.com/posts/18`, { body: 'order number 54'});
+
+    console.log(response.data);
+    return response.data;
+  } catch(error){
+    if (axios.isAxiosError(error)){
+      console.error("The fetch error is: ", error.message);
+    } else{
+      console.error("Unexpected error: ", error);
+    }
+
+    throw error;
+  }
+}
+
+async function deleteUser(){
+  try{
+    const response = await axios.delete(`https://jsonplaceholder.typicode.com/posts/23`);
+
+    console.log(response.data);
+    return response.data;
+  } catch(error){
+    if (axios.isAxiosError(error)){
+      console.error("The fetch error is: ", error.message);
+    } else{
+      console.error("Unexpected error: ", error);
+    }
+
+    throw error;
+  }
+}
+
+
+fetchUser();
+console.log("\n");
+createUser('Jeremy', 'wizard', 'no');
+console.log("\n");
+updateUser();
+console.log("\n");
+partialUpdateUser();
+console.log("\n");
+deleteUser();
 
 export default function Home() {
   return (
